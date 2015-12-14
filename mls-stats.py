@@ -64,7 +64,7 @@ def gatherStats():
         #<td data-title="Player">
         for playerTag in result:
             '''
-            if ('Carroll' not in playerTag.getText()):
+            if ('Nogueira' not in playerTag.getText()):
                 continue
             '''
             playerName = playerTag.getText().encode('utf-8')
@@ -74,12 +74,17 @@ def gatherStats():
             outputFile.write(bytes(' ~~~~~~\n', 'UTF-8'))
             playerList.append(playerName)
 
+
+
             #Look for the player's youth career in Wikipedia
             #to locate college
             wikipediaURL = wiki_base_url + playerName.decode('utf-8')
             wikipediaPage = requests.get(wikipediaURL).text.encode('utf-8')
             soup = bs4.BeautifulSoup(wikipediaPage, "html.parser")
             resultSet = soup(text="Youth career")
+
+            if (len(resultSet) == 0):
+                outputFile.write(bytes('No Youth Career section\n', 'UTF-8'))
 
             #Loop through each youth career entry for the player
             for result in resultSet:
@@ -138,5 +143,11 @@ def gatherStats():
         pageNum = pageNum + 1
 
     outputFile.close()
+
+    #Write players to file
+    playerFile = open('players.txt', 'wb')
+    for player in playerList:
+        playerFile.write(player + bytes('\n', 'UTF-8')) 
+    playerFile.close()
 
 gatherStats();
