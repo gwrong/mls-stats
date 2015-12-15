@@ -64,7 +64,7 @@ def gatherStats():
         #<td data-title="Player">
         for playerTag in result:
             '''
-            if ('Nogueira' not in playerTag.getText()):
+            if ('Keane' not in playerTag.getText()):
                 continue
             '''
             playerName = playerTag.getText().encode('utf-8')
@@ -73,8 +73,6 @@ def gatherStats():
             outputFile.write(playerName)
             outputFile.write(bytes(' ~~~~~~\n', 'UTF-8'))
             playerList.append(playerName)
-
-
 
             #Look for the player's youth career in Wikipedia
             #to locate college
@@ -96,10 +94,9 @@ def gatherStats():
 
                 #Keep going through the table until we hit the next section
                 while ("Senior career" not in str(currentRow)):
+                    
                     children = currentRow.findChildren()
-                    currentRow = currentRow.find_next_sibling()
                     tagCount = 0
-
                     for child in children:
 
                         if (len(children) == 2):
@@ -108,18 +105,26 @@ def gatherStats():
                             if (tagCount == 1):
                                 outputFile.write(bytes('Team: ' + child.text + '\n', 'UTF-8'))
                         else:
-                            
+                            #print(str(tagCount) + str(child))
                             if (tagCount == 0):
                                 outputFile.write(bytes('Years: ' + child.text + '\n', 'UTF-8'))
                             if (tagCount == 2):
 
                                 #Search for wiki link for team if exists
                                 hasHyperlink = True
-                                aHrefTag = child.find('a')
+                                aHrefTag = None
+
+                                #If we already are an 'a' tag, we found it
+                                if (child.name == 'a'):
+                                    aHrefTag = child
+                                else: #Otherwise search in this tag
+                                    aHrefTag = child.find('a')
+                                
                                 isCollege = False
                                 if (aHrefTag == None):
                                     hasHyperlink = False
                                 else:
+                                    #Some links are external
                                     if (not aHrefTag['href'].startswith('/wiki/')):
                                         hasHyperlink = False
                                     else:
@@ -134,6 +139,9 @@ def gatherStats():
 
                                 outputFile.write(bytes('Team: ' + child.text + ' (' + collegeIndicator + ')\n', 'UTF-8'))
                         tagCount= tagCount + 1
+
+                    #Advance to the next table row
+                    currentRow = currentRow.find_next_sibling()
 
                 #We just want the first spot we see Youth career
                 break
