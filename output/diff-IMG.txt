@@ -1,0 +1,389 @@
+Comparing files output.txt and OUTPUT-RUN.TXT
+***** output.txt
+Years: 2004–2006
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Ethan Finlay ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 2004–2006
+Team: IMG Soccer Academy (College)
+~~~~~~ Ethan Finlay ~~~~~~
+*****
+
+***** output.txt
+Team: Notre Dame Fighting Irish (College)
+~~~~~~ Boniek Garcia ~~~~~~
+Years: 2003
+Team: Real Patepluma (No Wikipedia link)
+~~~~~~ Giovani dos Santos ~~~~~~
+***** OUTPUT-RUN.TXT
+Team: Notre Dame Fighting Irish (College)
+~~~~~~ Oscar Garcia ~~~~~~
+No Youth Career section
+~~~~~~ Giovani dos Santos ~~~~~~
+*****
+
+***** output.txt
+Years: 2010–2011
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Dillon Serna ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 2010–2011
+Team: IMG Soccer Academy (College)
+~~~~~~ Dillon Serna ~~~~~~
+*****
+
+***** output.txt
+Years: 2007–2009
+Team: IMG Soccer Academy (Not a college)
+Years: 2010
+***** OUTPUT-RUN.TXT
+Years: 2007–2009
+Team: IMG Soccer Academy (College)
+Years: 2010
+*****
+
+***** output.txt
+Years: 2006–2008
+Team: IMG Soccer Academy (Not a college)
+Years: 2008–2009
+***** OUTPUT-RUN.TXT
+Years: 2006–2008
+Team: IMG Soccer Academy (College)
+Years: 2008–2009
+*****
+
+***** output.txt
+Years: 2010
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Olmes García ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 2010
+Team: IMG Soccer Academy (College)
+~~~~~~ Olmes García ~~~~~~
+*****
+
+***** output.txt
+Years: 2005
+Team: IMG Soccer Academy (Not a college)
+Years: 2006–2008
+***** OUTPUT-RUN.TXT
+Years: 2005
+Team: IMG Soccer Academy (College)
+Years: 2006–2008
+*****
+
+***** output.txt
+Years: 2002
+Team: IMG Soccer Academy (Not a college)
+Years: 2005
+***** OUTPUT-RUN.TXT
+Years: 2002
+Team: IMG Soccer Academy (College)
+Years: 2005
+*****
+
+***** output.txt
+Years: 2003–2004
+Team: IMG Soccer Academy (Not a college)
+Years: 2004–2005
+***** OUTPUT-RUN.TXT
+Years: 2003–2004
+Team: IMG Soccer Academy (College)
+Years: 2004–2005
+*****
+
+***** output.txt
+Years: 2011
+Team: IMG Soccer Academy (Not a college)
+Years: 2011–2012
+***** OUTPUT-RUN.TXT
+Years: 2011
+Team: IMG Soccer Academy (College)
+Years: 2011–2012
+*****
+
+***** output.txt
+Years: 2004–2005
+Team: IMG Soccer Academy (Not a college)
+Years: 2005
+***** OUTPUT-RUN.TXT
+Years: 2004–2005
+Team: IMG Soccer Academy (College)
+Years: 2005
+*****
+
+***** output.txt
+Years: 2002–2003
+Team: IMG Soccer Academy (Not a college)
+Years: 2003–2005
+***** OUTPUT-RUN.TXT
+Years: 2002–2003
+Team: IMG Soccer Academy (College)
+Years: 2003–2005
+*****
+
+***** output.txt
+Years: 1999
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Ty Harden ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 1999
+Team: IMG Soccer Academy (College)
+~~~~~~ Ty Harden ~~~~~~
+*****
+
+***** output.txt
+Years: 2007–2009
+Team: IMG Soccer Academy (Not a college)
+Years: 2009–2010
+***** OUTPUT-RUN.TXT
+Years: 2007–2009
+Team: IMG Soccer Academy (College)
+Years: 2009–2010
+*****
+
+***** output.txt
+Team: Real de Banjul (Not a college)
+~~~~~~ Drew Moor ~~~~~~
+Years: 2002
+Team: Furman Paladins (College)
+Years: 2003–2004
+Team: Indiana Hoosiers (College)
+~~~~~~ Aaron  Maund ~~~~~~
+***** OUTPUT-RUN.TXT
+Team: Real de Banjul (Not a college)
+~~~~~~ Andrew Moor ~~~~~~
+No Youth Career section
+~~~~~~ Aaron  Maund ~~~~~~
+*****
+
+***** output.txt
+Years: 1998–1999
+Team: IMG Academy (Not a college)
+~~~~~~ Khiry Shelton ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 1998–1999
+Team: IMG Academy (College)
+~~~~~~ Khiry Shelton ~~~~~~
+*****
+
+***** output.txt
+Years: 2008–2009
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Nicolás Mezquida ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 2008–2009
+Team: IMG Soccer Academy (College)
+~~~~~~ Nicolás Mezquida ~~~~~~
+*****
+
+***** output.txt
+Years: 2008–2009
+Team: IMG Soccer Academy (Not a college)
+Years: 2009–2010
+***** OUTPUT-RUN.TXT
+Years: 2008–2009
+Team: IMG Soccer Academy (College)
+Years: 2009–2010
+*****
+
+***** output.txt
+~~~~~~ Steven Beitashour ~~~~~~
+Years: 2005–2009
+***** OUTPUT-RUN.TXT
+~~~~~~ Steven Beitashour ~~~~~~
+Years: 2001–2005
+Team: Leland High School (Not a college)
+Years: 2005–2009
+*****
+
+***** output.txt
+Years: 2005–2007
+Team: IMG Soccer Academy (Not a college)
+Years: 2008
+***** OUTPUT-RUN.TXT
+Years: 2005–2007
+Team: IMG Soccer Academy (College)
+Years: 2008
+*****
+
+***** output.txt
+Years: 2005–2007
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Carlos Rivas ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 2005–2007
+Team: IMG Soccer Academy (College)
+~~~~~~ Carlos Rivas ~~~~~~
+*****
+
+***** output.txt
+Years: 2001–2003
+Team: IMG Soccer Academy (Not a college)
+Years: 2003–2006
+***** OUTPUT-RUN.TXT
+Years: 2001–2003
+Team: IMG Soccer Academy (College)
+Years: 2003–2006
+*****
+
+***** output.txt
+Years: 2001
+Team: IMG Soccer Academy (Not a college)
+Years: 2002–2005
+***** OUTPUT-RUN.TXT
+Years: 2001
+Team: IMG Soccer Academy (College)
+Years: 2002–2005
+*****
+
+***** output.txt
+Years: 2007
+Team: IMG Soccer Academy (Not a college)
+Years: 2007–2009
+***** OUTPUT-RUN.TXT
+Years: 2007
+Team: IMG Soccer Academy (College)
+Years: 2007–2009
+*****
+
+***** output.txt
+Years: 2006–2007
+Team: IMG Soccer Academy (Not a college)
+Years: 2009
+***** OUTPUT-RUN.TXT
+Years: 2006–2007
+Team: IMG Soccer Academy (College)
+Years: 2009
+*****
+
+***** output.txt
+Years: 2006–2008
+Team: IMG Soccer Academy (Not a college)
+Years: 2008–2010
+***** OUTPUT-RUN.TXT
+Years: 2006–2008
+Team: IMG Soccer Academy (College)
+Years: 2008–2010
+*****
+
+***** output.txt
+Years: 2003–2005
+Team: IMG Soccer Academy (Not a college)
+Years: 2006–2007
+***** OUTPUT-RUN.TXT
+Years: 2003–2005
+Team: IMG Soccer Academy (College)
+Years: 2006–2007
+*****
+
+***** output.txt
+Years: 2008–2009
+Team: IMG Academy (Not a college)
+Years: 2009–2011
+***** OUTPUT-RUN.TXT
+Years: 2008–2009
+Team: IMG Academy (College)
+Years: 2009–2011
+*****
+
+***** output.txt
+Team: Berry Vikings (College)
+~~~~~~ Daniel  Steres  ~~~~~~
+Years: 2008–2011
+***** OUTPUT-RUN.TXT
+Team: Berry Vikings (College)
+~~~~~~ Daniel Steres ~~~~~~
+Years: 2008–2011
+*****
+
+***** output.txt
+Years: 2005–2006
+Team: IMG Soccer Academy (Not a college)
+Years: 2008–2011
+***** OUTPUT-RUN.TXT
+Years: 2005–2006
+Team: IMG Soccer Academy (College)
+Years: 2008–2011
+*****
+
+***** output.txt
+Years: 2012–2013
+Team: IMG Soccer Academy (Not a college)
+Years: 2013–2014
+***** OUTPUT-RUN.TXT
+Years: 2012–2013
+Team: IMG Soccer Academy (College)
+Years: 2013–2014
+*****
+
+***** output.txt
+Years: 2013–2014
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Adam Bedell ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 2013–2014
+Team: IMG Soccer Academy (College)
+~~~~~~ Adam Bedell ~~~~~~
+*****
+
+***** output.txt
+Years: 2007–2009
+Team: IMG Academy (Not a college)
+Years: 2009
+***** OUTPUT-RUN.TXT
+Years: 2007–2009
+Team: IMG Academy (College)
+Years: 2009
+*****
+
+***** output.txt
+Years: 2007
+Team: IMG Soccer Academy (Not a college)
+Years: 2008
+***** OUTPUT-RUN.TXT
+Years: 2007
+Team: IMG Soccer Academy (College)
+Years: 2008
+*****
+
+***** output.txt
+Years: 2005–2007
+Team: IMG Soccer Academy (Not a college)
+Years: 2007–2008
+***** OUTPUT-RUN.TXT
+Years: 2005–2007
+Team: IMG Soccer Academy (College)
+Years: 2007–2008
+*****
+
+***** output.txt
+Years: 2007–2009
+Team: IMG Academy (Not a college)
+Years: 2010–2011
+***** OUTPUT-RUN.TXT
+Years: 2007–2009
+Team: IMG Academy (College)
+Years: 2010–2011
+*****
+
+***** output.txt
+Years: 2007
+Team: IMG Soccer Academy (Not a college)
+Years: 2008–2009
+***** OUTPUT-RUN.TXT
+Years: 2007
+Team: IMG Soccer Academy (College)
+Years: 2008–2009
+*****
+
+***** output.txt
+Years: 2000–2001
+Team: IMG Soccer Academy (Not a college)
+~~~~~~ Adam Nemec ~~~~~~
+***** OUTPUT-RUN.TXT
+Years: 2000–2001
+Team: IMG Soccer Academy (College)
+~~~~~~ Adam Nemec ~~~~~~
+*****
+
