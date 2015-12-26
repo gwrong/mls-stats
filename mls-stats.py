@@ -1,6 +1,7 @@
 import requests
 import bs4
 import sys
+import json
 
 collegeWords = ['university', 'college', 'NCAA', 'NAIA']       
 
@@ -48,7 +49,7 @@ if any
 def gatherStats():
 
     #Determines the season
-    year = 2007
+    year = 2015
 
     url = ''
     wiki_base_url = 'https://en.wikipedia.org/wiki/'
@@ -56,7 +57,7 @@ def gatherStats():
     
     playerList = []
 
-    playerDict = dict()
+    playersDict = dict()
 
     outputFile = open('output.txt', 'w')
     playerFile = open('players.txt', 'w')
@@ -91,12 +92,30 @@ def gatherStats():
                 if ('Keane' not in playerTag.getText()):
                     continue
                 '''
-                playerName = playerTag.getText()
-                print(playerTag.getText())
-                outputFile.write('~~~~~~ ' + playerName + ' ~~~~~~\n')
-                playerList.append(playerName)
 
-                playerFile.write(playerTag.getText() + '\n')
+                playerName = playerTag.getText()
+                
+                #Check if we have already looked up that player's info
+                if (playerName not in playersDict):
+                    playersDict[playerName] = dict()
+                    playersDict[playerName]['youth'] = []
+                    playersDict[playerName]['yearsPlayed'] = []
+                    playersDict[playerName]['yearsPlayed'].append(year)
+                    playersDict[playerName]['mlsPage'] = []
+                    playersDict[playerName]['mlsPage'].append(str(year) + ', ' + str(pageNum))
+                    playerFile.write(playerName + '\n')
+                else:
+                    #Player has already been looked up
+                    print("Player " + playerName + " has already been looked up")
+                    playerFile.write(playerName + ' - SKIPPED\n')
+                    playersDict[playerName]['yearsPlayed'].append(year)
+                    playersDict[playerName]['mlsPage'].append(str(year) + ', ' + str(pageNum))
+                    continue
+
+                print(playerTag.getText())
+                #outputFile.write('~~~~~~ ' + playerName + ' ~~~~~~\n')
+                #playerList.append(playerName)
+                
                 playerFile.flush()
 
                 try:
@@ -109,7 +128,11 @@ def gatherStats():
                     resultSet = soup(text="Youth career")
 
                     if (len(resultSet) == 0):
-                        outputFile.write('No Youth Career section\n')
+                        #outputFile.write('No Youth Career section\n')
+                        print('No Youth Career section\n')
+
+
+                    clubEntries = []
 
                     #Loop through each youth career entry for the player
                     for result in resultSet:
@@ -118,25 +141,30 @@ def gatherStats():
                         #navigate to the next table entries
                         parentRow = result.parent.parent
                         currentRow = parentRow.find_next_sibling()
+                        
 
                         #Keep going through the table until we hit the next section
                         while (currentRow != None and "Senior career" not in str(currentRow)):
                             
                             children = currentRow.findChildren()
                             tagCount = 0
+
                             for child in children:
 
                                 #There seem to be 2 different structures for the
                                 #youth career section. Will need to investigate
                                 if (len(children) == 2):
                                     if (tagCount == 0):
-                                        outputFile.write('Years: ' + child.text + '\n')
+                                        #outputFile.write('Years: ' + child.text + '\n')
+                                        clubEntries.append(child.text)
                                     if (tagCount == 1):
-                                        outputFile.write('Team: ' + child.text + '\n')
+                                        #outputFile.write('Team: ' + child.text + '\n')
+                                        clubEntries.append(child.text)
                                 else:
                                     #print(str(tagCount) + str(child))
                                     if (tagCount == 0):
-                                        outputFile.write('Years: ' + child.text + '\n')
+                                        #outputFile.write('Years: ' + child.text + '\n')
+                                        clubEntries.append(child.text)
                                     if (tagCount == 2):
 
                                         #Search for wiki link for team if exists
@@ -167,26 +195,37 @@ def gatherStats():
                                         else:
                                             collegeIndicator = 'Not a college'
 
-                                        outputFile.write('Team: ' + child.text + ' (' + collegeIndicator + ')\n')
+                                        #outputFile.write('Team: ' + child.text + ' (' + collegeIndicator + ')\n')
+                                        clubEntries.append(child.text + ' (' + collegeIndicator + ')')
+
                                 tagCount= tagCount + 1
 
                             #Advance to the next table row
                             currentRow = currentRow.find_next_sibling()
 
+                        #Zip up all year, club tuples from our list
+                        zippedClubEntries = list(zip(clubEntries[0::2], clubEntries[1::2]))
+
+                        playersDict[playerName]['youth'] = [x + ', ' + y for x, y in zippedClubEntries]
+                        #print(playersDict[playerName])
+                        
                         #We just want the first spot we see Youth career
                         break
 
+                    #print(playersDict[playerName])
                     
                 except Exception as e:
-                    outputFile.write("Error occurred\n")
+                    print("Error occurred: " + str(e) + "\n")
                 
-                outputFile.flush()
+                #outputFile.flush()
             #Advance to the next page of this season
             pageNum = pageNum + 1
-            break
 
         year -= 1
-        break
+
+    outputFile.write(json.dumps(playersDict, indent=4, sort_keys=True) + '\n')
+
+    outputFile.write("Number of unique players: " + str(len(playersDict.keys())))
 
     #Close dem file handlers
     outputFile.close()
