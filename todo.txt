@@ -1,0 +1,12 @@
+Sometimes the name scraped has a wiki page but has a different url than just putting in the player's name
+    Name
+        (Yazid Atouba Emane) https://en.wikipedia.org/wiki/Yazid_Atouba
+        Danchrisandre Delgado https://en.wikipedia.org/wiki/Dan_Delgado
+    (soccer)
+        Will Johnson https://en.wikipedia.org/wiki/Will_Johnson_%28soccer%29
+Some players don't have English wikipedia pages
+    Yherland McDonald
+Some players have pages but no youth career information
+    Dairon Asprilla https://en.wikipedia.org/wiki/Dairon_Asprilla
+
+Link the college playing with national caps or salary data
