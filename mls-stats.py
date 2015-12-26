@@ -56,17 +56,16 @@ def gatherStats():
     
     playerList = []
 
-    outputFile = open('output.txt', 'wb')
-    playerFile = open('players.txt', 'wb')
+    playerDict = dict()
+
+    outputFile = open('output.txt', 'w')
+    playerFile = open('players.txt', 'w')
 
     #Go through all seasons
     while (year >= 1996):
 
         #Determines the page number within the season
-        if (year == 2007):
-            pageNum = 5
-        else:
-            pageNum = 0
+        pageNum = 0
 
         numPlayersOnPage = sys.maxsize
 
@@ -78,7 +77,7 @@ def gatherStats():
             #Generate the page url
             url = getURL(year, pageNum)
 
-            mlsPage = requests.get(url).text.encode('utf-8')
+            mlsPage = requests.get(url).text
             soup = bs4.BeautifulSoup(mlsPage, "html.parser")
 
             result = soup.body.find_all('td', {"data-title" : "Player"})
@@ -92,28 +91,25 @@ def gatherStats():
                 if ('Keane' not in playerTag.getText()):
                     continue
                 '''
-                playerName = playerTag.getText().encode('utf-8')
+                playerName = playerTag.getText()
                 print(playerTag.getText())
-                outputFile.write(bytes('~~~~~~ ', 'UTF-8'))
-                outputFile.write(playerName)
-                outputFile.write(bytes(' ~~~~~~\n', 'UTF-8'))
+                outputFile.write('~~~~~~ ' + playerName + ' ~~~~~~\n')
                 playerList.append(playerName)
 
-                playerFile.write(playerName)
-                playerFile.write(bytes('\n', 'UTF-8'))
+                playerFile.write(playerTag.getText() + '\n')
                 playerFile.flush()
 
                 try:
 
                     #Look for the player's youth career in Wikipedia
                     #to locate college
-                    wikipediaURL = wiki_base_url + playerName.decode('utf-8')
-                    wikipediaPage = requests.get(wikipediaURL).text.encode('utf-8')
+                    wikipediaURL = wiki_base_url + playerName
+                    wikipediaPage = requests.get(wikipediaURL).text
                     soup = bs4.BeautifulSoup(wikipediaPage, "html.parser")
                     resultSet = soup(text="Youth career")
 
                     if (len(resultSet) == 0):
-                        outputFile.write(bytes('No Youth Career section\n', 'UTF-8'))
+                        outputFile.write('No Youth Career section\n')
 
                     #Loop through each youth career entry for the player
                     for result in resultSet:
@@ -134,13 +130,13 @@ def gatherStats():
                                 #youth career section. Will need to investigate
                                 if (len(children) == 2):
                                     if (tagCount == 0):
-                                        outputFile.write(bytes('Years: ' + child.text + '\n', 'UTF-8'))
+                                        outputFile.write('Years: ' + child.text + '\n')
                                     if (tagCount == 1):
-                                        outputFile.write(bytes('Team: ' + child.text + '\n', 'UTF-8'))
+                                        outputFile.write('Team: ' + child.text + '\n')
                                 else:
                                     #print(str(tagCount) + str(child))
                                     if (tagCount == 0):
-                                        outputFile.write(bytes('Years: ' + child.text + '\n', 'UTF-8'))
+                                        outputFile.write('Years: ' + child.text + '\n')
                                     if (tagCount == 2):
 
                                         #Search for wiki link for team if exists
@@ -171,7 +167,7 @@ def gatherStats():
                                         else:
                                             collegeIndicator = 'Not a college'
 
-                                        outputFile.write(bytes('Team: ' + child.text + ' (' + collegeIndicator + ')\n', 'UTF-8'))
+                                        outputFile.write('Team: ' + child.text + ' (' + collegeIndicator + ')\n')
                                 tagCount= tagCount + 1
 
                             #Advance to the next table row
@@ -187,33 +183,14 @@ def gatherStats():
                 outputFile.flush()
             #Advance to the next page of this season
             pageNum = pageNum + 1
+            break
 
         year -= 1
+        break
 
     #Close dem file handlers
     outputFile.close()
     playerFile.close()
 
 
-def postForm():
-    import requests
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    payload = {'franchise': 'select', 'year': '2014', 'season_type': 'REG', 'group': 'goals', 'op': 'Search', 'form_build_id': 'form-iTMqGm5AwXDmfkfwJUpHlwSeJLkyLEtFs19jEoH6veI', 'form_id': 'mp7_stats_hub_build_filter_form'}
-
-    session = requests.Session()
-    #response = session.get('http://www.mlssoccer.com/stats/season?franchise=select&amp;year=2014&amp;season_type=REG&amp;group=goals&amp;op=Search&amp;form_build_id=form-iTMqGm5AwXDmfkfwJUpHlwSeJLkyLEtFs19jEoH6veI&amp;form_id=mp7_stats_hub_build_filter_form', headers=headers, data=payload)
-    response = session.get('http://www.mlssoccer.com/stats/season?franchise=select&year=2014&season_type=REG&group=goals&op=Search&form_build_id=form-iTMqGm5AwXDmfkfwJUpHlwSeJLkyLEtFs19jEoH6veI&form_id=mp7_stats_hub_build_filter_form')
-    print(dir(session))
-    print(str(response.url))
-    soup = bs4.BeautifulSoup(response.content, "html.parser")
-    result = soup.body.find_all('td', {"data-title" : "Player"})
-    for playerTag in result:
-            '''
-            if ('Keane' not in playerTag.getText()):
-                continue
-            '''
-            playerName = playerTag.getText().encode('utf-8')
-            print(playerName)
-
-#postForm()
 gatherStats();
