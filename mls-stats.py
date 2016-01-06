@@ -2,6 +2,7 @@ import requests
 import bs4
 import sys
 import json
+import _thread
 
 collegeWords = ['university', 'college', 'NCAA', 'NAIA']       
 
@@ -88,12 +89,16 @@ def gatherStats():
             #Parse each player tag
             #<td data-title="Player">
             for playerTag in result:
+                
                 '''
-                if ('Keane' not in playerTag.getText()):
+                if ('Landon Donovan' not in playerTag.getText()):
                     continue
                 '''
 
                 playerName = playerTag.getText()
+
+                #_thread.start_new_thread(speak, (playerName,))
+                
                 
                 #Check if we have already looked up that player's info
                 if (playerName not in playersDict):
@@ -129,7 +134,7 @@ def gatherStats():
 
                     if (len(resultSet) == 0):
                         #outputFile.write('No Youth Career section\n')
-                        print('No Youth Career section\n')
+                        print('No Youth Career section')
 
 
                     clubEntries = []
@@ -213,10 +218,60 @@ def gatherStats():
                         break
 
                     #print(playersDict[playerName])
+
+                    nationalTeamResultSet = soup(text="National team")
+
+                    clubEntries = dict()
+                    clubEntries['ntlYears'] = []
+                    clubEntries['ntlTeam'] = []
+                    clubEntries['ntlApps'] = []
+                    clubEntries['ntlGoals'] = []
+
+                    for result in nationalTeamResultSet:
+                        parentRow = result.parent.parent
+                        currentRow = parentRow.find_next_sibling()
+                        
+
+                        #Keep going through the table until we hit the next section
+                        while (currentRow != None):
+                            
+                            children = currentRow.findChildren()
+                            tagCount = 0
+
+                            for child in children:
+
+                                #There seem to be 2 different structures for the
+                                #youth career section. Will need to investigate
+                                #print(child.text + str(tagCount))
+                                if (tagCount == 0):
+                                    clubEntries['ntlYears'].append(child.text)
+
+                                if (tagCount == 1):
+                                    x=5
+                                    
+                                if (tagCount == 2):
+                                    clubEntries['ntlTeam'].append(child.text)
+                                    
+                                if (tagCount == 3):
+                                    x=5
+                                    
+                                if (tagCount == 4):
+                                    clubEntries['ntlApps'].append(child.text)
+
+                                if (tagCount == 5):
+                                    clubEntries['ntlGoals'].append(child.text)
+                                    
+
+                                tagCount += 1
+
+                            currentRow = currentRow.find_next_sibling()
                     
+                    zippedNationalEntries = list(zip(clubEntries['ntlYears'], clubEntries['ntlTeam'], clubEntries['ntlApps'], clubEntries['ntlGoals']))
+                    playersDict[playerName]['national'] = [w + ', ' + x + ', ' + y + ', ' + z  for w, x, y, z in zippedNationalEntries]
+
                 except Exception as e:
                     print("Error occurred: " + str(e) + "\n")
-                
+
                 #outputFile.flush()
             #Advance to the next page of this season
             pageNum = pageNum + 1
@@ -231,5 +286,49 @@ def gatherStats():
     outputFile.close()
     playerFile.close()
 
+    
+'''
+Convert the saved json file from above
+to an excel file
+'''
+def convertToExcel():
+
+    with open('output_all.txt') as data_file:    
+        data = json.load(data_file)
+
+    excelFile = open('mls-excel.csv', 'wb')
+    print(data)
+    for player in data.keys():
+        excelFile.write(player.encode('utf-8'))
+        excelFile.write(','.encode('utf-8'))
+
+        mlsYears = len(data[player]['yearsPlayed'])
+        excelFile.write(str(mlsYears).encode('utf-8'))
+
+        youthList = data[player]['youth']
+        if (len(youthList) > 0):
+
+            #Convert weird symbols to dashes
+            
+            years = youthList[-1].split(',')[0].replace('\u2013', '-')
+            print(youthList[-1].split(',')[1])
+            excelFile.write(','.encode('utf-8'))
+            excelFile.write(years.encode('utf-8'))
+            excelFile.write(','.encode('utf-8'))
+            excelFile.write(youthList[-1].split(',')[1].encode('utf-8'))
+        excelFile.write('\n'.encode('utf-8'))
+
+    excelFile.close()
+
+'''
+Text to speech for fun
+'''
+def speak(toSpeak):
+
+    import win32com.client
+    speaker = win32com.client.Dispatch("SAPI.SpVoice")
+    speaker.Speak(toSpeak)
 
 gatherStats();
+#convertToExcel()
+#speak()
