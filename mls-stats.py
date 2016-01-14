@@ -293,10 +293,12 @@ to an excel file
 '''
 def convertToExcel():
 
-    with open('output_all.txt') as data_file:    
+    with open('output.txt') as data_file:    
         data = json.load(data_file)
 
     excelFile = open('mls-excel.csv', 'wb')
+    excelFile.write('Player,mlsYears,youthYears,youthTeam,ntlCaps'.encode('utf-8'))
+    excelFile.write('\n'.encode('utf-8'))
     print(data)
     for player in data.keys():
         excelFile.write(player.encode('utf-8'))
@@ -316,6 +318,17 @@ def convertToExcel():
             excelFile.write(years.encode('utf-8'))
             excelFile.write(','.encode('utf-8'))
             excelFile.write(youthList[-1].split(',')[1].encode('utf-8'))
+            excelFile.write(','.encode('utf-8'))
+
+            capSum = 0
+            for entry in data[player]['national']:
+                try:
+                    capSum += int(entry.split(',')[2])
+                except:
+                    print('Invalid caps: ' + str(player))
+
+            excelFile.write(str(capSum).encode('utf-8'))
+
         excelFile.write('\n'.encode('utf-8'))
 
     excelFile.close()
@@ -329,6 +342,6 @@ def speak(toSpeak):
     speaker = win32com.client.Dispatch("SAPI.SpVoice")
     speaker.Speak(toSpeak)
 
-gatherStats();
-#convertToExcel()
+#gatherStats();
+convertToExcel()
 #speak()
