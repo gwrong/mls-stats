@@ -10,10 +10,14 @@ Some players have pages but no youth career information
     Dairon Asprilla https://en.wikipedia.org/wiki/Dairon_Asprilla
 
 Link the college playing with national caps or salary data
-https://www.mlsplayers.org/salary_info.html
-Wikipedia for national caps
+    https://www.mlsplayers.org/salary_info.html
+    Wikipedia for national caps
+    remove youth national teams
 
 Check Adolfo Bautista
 
+A few players don't scrape national team caps correctly (Goes past the table)
+
 Convert output to excel readable
 #http://stackoverflow.com/questions/6002256/is-it-possible-to-force-excel-recognize-utf-8-csv-files-automatically
+
